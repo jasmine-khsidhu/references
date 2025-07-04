@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0">
+  <info>
+    <title>MJA Vancouver Modified</title>
+    <id>http://www.zotero.org/styles/mja-vancouver-modified</id>
+    <link href="http://www.zotero.org/styles/vancouver-brackets" rel="template"/>
+    <author>
+      <name>ChatGPT Custom</name>
+    </author>
+    <category citation-format="numeric"/>
+    <summary>Modified Vancouver style for Medical Journal of Australia with special web page formatting.</summary>
+  </info>
+
+  <macro name="author">
+    <names variable="author" delimiter=", ">
+      <name form="short" initialize-with=""/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <et-al term="et-al" prefix=", " font-style="normal"/>
+    </names>
+  </macro>
+
+  <macro name="title">
+    <text variable="title" text-case="sentence"/>
+  </macro>
+
+  <macro name="journal-details">
+    <group delimiter=" ">
+      <text variable="container-title" form="short"/>
+      <text variable="volume" prefix=" "/>
+      <text variable="page" prefix=": "/>
+    </group>
+  </macro>
+
+  <macro name="url">
+    <text variable="URL"/>
+  </macro>
+
+  <macro name="webpage">
+    <group delimiter=". ">
+      <names variable="author" delimiter=", "/>
+      <text variable="title" text-case="sentence"/>
+      <date variable="issued" prefix="Updated " form="text"/>
+      <text variable="URL"/>
+      <date variable="accessed" prefix="(viewed " suffix=")"/>
+    </group>
+  </macro>
+
+  <citation>
+    <layout prefix="(" suffix=")" delimiter=", ">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+
+  <bibliography>
+    <layout>
+      <choose>
+        <if type="webpage">
+          <text macro="webpage"/>
+        </if>
+        <else>
+          <group delimiter=". ">
+            <text macro="author"/>
+            <text macro="title"/>
+            <text macro="journal-details"/>
+            <text macro="url"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>
